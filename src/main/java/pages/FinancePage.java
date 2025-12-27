@@ -6,4 +6,5 @@ public class FinancePage extends BasePage{
     public FinancePage(WebDriver driver) {
         super(driver);
     }
+
 }
