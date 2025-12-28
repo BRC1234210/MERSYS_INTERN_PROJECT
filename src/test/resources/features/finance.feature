@@ -1,1 +1,1 @@
-Feature: US 008 Finance
+Feature: Finance Functionality US_008
