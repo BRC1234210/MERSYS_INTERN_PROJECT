@@ -21,8 +21,7 @@ public class AssignmentPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"container-3\"]/ms-assignment-panel-student/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div/div")
     private WebElement javaB8;       // java B8 tıklama locator ı.
 
-    @FindBy(xpath = "")
-    private WebElement
+
 
 
 
