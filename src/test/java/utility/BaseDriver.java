@@ -48,7 +48,7 @@ public class BaseDriver {
         }
     }
 
-    public static void tearDown() {
+  public static void tearDown() {
         WebDriver driver = threadDriver.get();
 
         if (driver != null) {
@@ -58,3 +58,5 @@ public class BaseDriver {
         threadBrowser.remove();
     }
 }
+
+
