@@ -1,11 +1,10 @@
 package pages;
 
-import io.qameta.allure.internal.shadowed.jackson.databind.ser.Serializers;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class loginPage extends BasePage {
+public class LoginPage extends BasePage {
 
 
 // https://live.mersys.io/ (Çalışacağımız site)
@@ -50,7 +49,7 @@ public class loginPage extends BasePage {
     }
 
 
-    public loginPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 }
