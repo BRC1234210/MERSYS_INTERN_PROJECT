@@ -13,6 +13,10 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[@class='mat-mdc-form-field-infix'][1]/input")
     private WebElement usernameInput;
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
     public void sendkeysUsernameInput(String username) {
         sendKeysToElement(usernameInput, username);
     }
@@ -26,7 +30,7 @@ public class LoginPage extends BasePage {
     }
 
 
-    @FindBy(xpath = "span[class='mdc-button__label']")
+    @FindBy(xpath = "//button/span[contains(text(),' GİRİŞ YAP ')]")
     private WebElement loginButton;
 
     public void clickLoginButton(){
@@ -49,7 +53,5 @@ public class LoginPage extends BasePage {
     }
 
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
+
 }
