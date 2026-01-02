@@ -25,8 +25,8 @@ public class US_01_SuccessLoginSteps {
 
     @Then("Enter username and password")
     public void enterUsernameAndPassword() {
-        loginPage.sendkeysUsernameInput("baris_cansiz");
-        loginPage.sendkeysPasswordInput("Hifamm2027.");
+        loginPage.sendkeysUsernameInput("");
+        loginPage.sendkeysPasswordInput(".");
     }
 
     @Then("Click login button")
