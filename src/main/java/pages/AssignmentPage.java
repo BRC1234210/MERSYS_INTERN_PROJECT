@@ -35,7 +35,14 @@ public class AssignmentPage extends BasePage{
     @FindBy(xpath = "//mat-select[@id='mat-select-41']")
     private WebElement attachmentTypeSelect;  // attachment type yazan select
 
+    @FindBy(xpath = "//ms-button[@icon='paperclip']")
+    private WebElement attachFilesButton;  // attach files yazan buton
 
+    @FindBy(xpath = "//ms-confirm-button[@icon='file-import']")
+    private WebElement submitButton;      // submit button
+
+    @FindBy(xpath = "//span[@class='title dialog-title']")
+    private WebElement submissionAttemptText;    // gönderim sayfasının açıldığına dair verify
 
 
 
