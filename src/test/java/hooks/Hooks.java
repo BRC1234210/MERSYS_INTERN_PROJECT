@@ -1,4 +1,4 @@
-package Hooks;
+package hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,6 +14,7 @@ import utility.ExcelHelper;
 
 public class Hooks {
 
+    public static WebDriver driver;
     public Logger LOGGER = LogManager.getLogger(this.getClass());
 
     @Before

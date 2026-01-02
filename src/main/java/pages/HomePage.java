@@ -81,6 +81,13 @@ public class HomePage extends BasePage {
         clickElement(profileButton);
     }
 
+    @FindBy(xpath = "//span[@style='font-size: 20px; padding-top: 4px;']")
+    private WebElement welcomeText;
+
+    public void verifyHomePage(){
+        verifyDisplayed(welcomeText,"welcome text is not displayed");
+    }
+
     public HomePage(WebDriver driver) {
         super(driver);
     }

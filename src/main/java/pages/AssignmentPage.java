@@ -21,8 +21,22 @@ public class AssignmentPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"container-3\"]/ms-assignment-panel-student/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div/div")
     private WebElement javaB8;       // java B8 tıklama locator ı.
 
+    @FindBy(xpath = "(//ms-icon-button[@icon='info'])[3]")
+    private WebElement iIcon;               // info button
 
+    @FindBy(xpath = "(//ms-icon-button[@icon='file-import'])[3]")
+    private  WebElement fileImport;     // infonun yanındaki gönderim butonu
 
+    @FindBy(xpath = "(//ms-icon-button[@icon='star'])[4]")
+    private WebElement starButton;       // favorite button
+
+    //----------- ------------  ------------ ---------//
+
+    @FindBy(xpath = "//mat-select[@id='mat-select-41']")
+    private WebElement attachmentTypeSelect;  // attachment type yazan select
+
+    @FindBy(xpath = "")
+    private WebElement
 
 
 
