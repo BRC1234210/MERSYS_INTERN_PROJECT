@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.HomePage;
 import pages.LoginPage;
+import utility.BaseDriver;
 
 public class US_01_SuccessLoginSteps {
 
@@ -18,15 +19,15 @@ public class US_01_SuccessLoginSteps {
     LoginPage loginPage;
     @When("Navigate to the webpage.")
     public void navigateToTheWebpage() {
-        driver= Hooks.driver;
-        loginPage=new LoginPage(driver);
+        driver=Hooks.driver;
         homePage=new HomePage(driver);
+        loginPage=new LoginPage(driver);
     }
 
     @Then("Enter username and password")
     public void enterUsernameAndPassword() {
-        loginPage.sendkeysUsernameInput("");
-        loginPage.sendkeysPasswordInput(".");
+        loginPage.sendkeysUsernameInput("baris_cansiz");
+        loginPage.sendkeysPasswordInput("Hifamm2027.");
     }
 
     @Then("Click login button")

@@ -35,8 +35,7 @@ public class AssignmentPage extends BasePage{
     @FindBy(xpath = "//mat-select[@id='mat-select-41']")
     private WebElement attachmentTypeSelect;  // attachment type yazan select
 
-    @FindBy(xpath = "")
-    private WebElement
+
 
 
 

@@ -34,7 +34,7 @@ public class Hooks {
             // Testng context yani her hangi bir xml dosyasi yoksa,
             // her durumda System.getProperty("browser","chrome"); bu calisir
         }
-        WebDriver driver = BaseDriver.getDriver();
+        driver = BaseDriver.getDriver();
         LOGGER.info("The driver has been created.");
         LOGGER.info("Scenario Started {}", scenario.getName());
 
