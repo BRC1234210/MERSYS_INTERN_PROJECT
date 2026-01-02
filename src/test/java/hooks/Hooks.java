@@ -42,6 +42,8 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) {
+        driver.quit();
+        LOGGER.info("The driver Quited succesfully");
         try {
             WebDriver driver = BaseDriver.getDriver();
             if (scenario.isFailed() && driver instanceof TakesScreenshot) { // base64 -> png
