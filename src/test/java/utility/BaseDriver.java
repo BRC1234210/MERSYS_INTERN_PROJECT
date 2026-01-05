@@ -18,16 +18,22 @@ public class BaseDriver {
     }
 
     public static WebDriver getDriver() {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://live.mersys.io/");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
+        WebDriver driver = threadDriver.get();
+        if (driver == null) {
+            String browser = threadBrowser.get();
+            if (browser == null) {
+                // bu satir xml olmadigi durumda otomatik chrome calistirsin
+                browser = System.getProperty("browser","chrome");
+                threadBrowser.set(browser);
+            }
+            driver = createDriver(browser.toLowerCase());
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            threadDriver.set(driver);
+        }
         return driver;
-
     }
-
     private static WebDriver createDriver(String browser) {
         return switch (browser) {
             case "firefox" -> new FirefoxDriver();
