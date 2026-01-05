@@ -3,6 +3,7 @@ package StepDefinitions;
 import hooks.Hooks;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.jsoup.Connection;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,15 +20,18 @@ public class US_01_SuccessLoginSteps {
     LoginPage loginPage;
     @When("Navigate to the webpage.")
     public void navigateToTheWebpage() {
-        driver=Hooks.driver;
+        driver=BaseDriver.getDriver();
         homePage=new HomePage(driver);
         loginPage=new LoginPage(driver);
+
+        driver.get("https://live.mersys.io/");
+        log.info("succesfully opened.");
     }
 
     @Then("Enter username and password")
     public void enterUsernameAndPassword() {
-        loginPage.sendkeysUsernameInput("");
-        loginPage.sendkeysPasswordInput("");
+        loginPage.sendkeysUsernameInput("baris_cansiz");
+        loginPage.sendkeysPasswordInput("Hifamm2027.");
     }
 
     @Then("Click login button")

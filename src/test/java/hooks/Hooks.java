@@ -13,8 +13,7 @@ import utility.BaseDriver;
 import utility.ExcelHelper;
 
 public class Hooks {
-
-    public static WebDriver driver;
+WebDriver driver;
     public Logger LOGGER = LogManager.getLogger(this.getClass());
 
     @Before
@@ -34,7 +33,7 @@ public class Hooks {
             // Testng context yani her hangi bir xml dosyasi yoksa,
             // her durumda System.getProperty("browser","chrome"); bu calisir
         }
-        driver = BaseDriver.getDriver();
+        WebDriver driver = BaseDriver.getDriver();
         LOGGER.info("The driver has been created.");
         LOGGER.info("Scenario Started {}", scenario.getName());
 
@@ -42,8 +41,7 @@ public class Hooks {
 
     @After
     public void tearDown(Scenario scenario) {
-        driver.quit();
-        LOGGER.info("The driver Quited succesfully");
+
         try {
             WebDriver driver = BaseDriver.getDriver();
             if (scenario.isFailed() && driver instanceof TakesScreenshot) { // base64 -> png
@@ -59,5 +57,7 @@ public class Hooks {
             BaseDriver.tearDown();
             LOGGER.info("The driver quited successfully");
         }
+
+
     }
 }
