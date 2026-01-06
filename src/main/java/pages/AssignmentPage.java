@@ -1,36 +1,100 @@
 package pages;
 
 import io.cucumber.java.de.Wenn;
+import io.cucumber.java.eo.Se;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class AssignmentPage extends BasePage{
 
-    @FindBy(xpath = "mat-mdc-form-field w-100-p mat-mdc-form-field-type-mat-select mat-form-field-appearance-outline mat-primary ng-valid mat-form-field-animations-enabled ng-touched ng-dirty")
+    @FindBy(xpath = "(//div[@class='mat-mdc-text-field-wrapper mdc-text-field mdc-text-field--outlined'])[1]")
     private WebElement classSelect;// show All yazan select butonu
 
     public void classSelect(){
         clickElement(classSelect);
     }
-    @FindBy(xpath = "//div[@id='mat-select-value-25']")
+    @FindBy(xpath = "(//div[@class='mat-mdc-select-trigger'])[2]")
     private WebElement statusSelect;        // statüs yazan select butonu
 
     public void statusSelect(){
         clickElement(statusSelect);
     }
-    @FindBy(xpath = "//span[@class='iso']")
+
+    @FindBy(xpath = "//button[@matbutton='tonal']")
     private WebElement defaultViewSelect;    // default view yazan search ün yanındaki select
 
     public void defaultViewSelect(){
+
         clickElement(defaultViewSelect);
     }
-    @FindBy(xpath = "//ms-search-button[@id='ms-search-button-9']")
+
+    @FindBy(xpath = "(//button[@class='mat-mdc-menu-item mat-focus-indicator'])[1]")
+    private WebElement defaultView1Select;
+
+    public void selectDefaultView(){
+        clickElement(defaultView1Select);
+    }
+
+    @FindBy(xpath = "(//mat-option[@class='mat-mdc-option mdc-list-item'])[2]")
+    private WebElement mehmetSimsekSelect;   // class filtreleme
+
+    public void mehmetSimsekSelect(){
+        clickElement(mehmetSimsekSelect);
+    }
+
+    @FindBy(xpath = "//mat-option[@id='mat-option-2']")
+    private WebElement resultsPublishedSelect;  // status filtreleme
+
+    public void resultsPublishedSelect(){
+        clickElement(resultsPublishedSelect);
+    }
+
+    @FindBy(xpath = "//mat-datepicker-toggle[@class='mat-datepicker-toggle']")
+    private WebElement dueDateSelect;    // tarih filtreleme
+
+    public void dueDate(){
+        clickElement(dueDateSelect);
+    }
+
+    @FindBy(xpath = "(//td[@data-mat-col='2'])[1]")
+    private WebElement startStudyDay;   // başlangıç ders günü filtrelemesi
+
+    public void startStudyDay(){
+        clickElement(startStudyDay);
+    }
+
+    @FindBy(xpath = "(//button[@class='mdc-icon-button mat-mdc-icon-button mat-mdc-button-base mat-mdc-tooltip-trigger button-calendar mat-unthemed'])[4]")
+    private WebElement nextMonthButton;
+
+    public void nextMonthButton(){
+        clickElement(nextMonthButton);
+    }
+
+
+    @FindBy(xpath = "(//td[@data-mat-col='2'])[5]")
+    private WebElement finishStudyDay;   //ders bitiş günü filtrelemesi
+
+    public void finishStudyDay(){
+        clickElement(finishStudyDay);
+    }
+
+
+    @FindBy(xpath = "//ms-search-button[@id='ms-search-button-0']")
     private WebElement searchButton;
 
     public void searchButton(){
         clickElement(searchButton);
     }
+
+
+
+
+
+
+    //-------------- ------------------- ---------------------
 
     @FindBy(xpath = "//*[@id=\"container-3\"]/ms-assignment-panel-student/div/div/div/div[2]/div[2]/div[2]/div/div[2]/div/div")
     private WebElement javaB8;       // java B8 tıklama locator ı default.
@@ -53,11 +117,14 @@ public class AssignmentPage extends BasePage{
     public void fileImport(){
         clickElement(fileImport);
     }
-    @FindBy(xpath = "(//ms-icon-button[@icon='star'])[4]")
+    @FindBy(xpath = "(//ms-icon-button[@icon='star'])[2]")
     private WebElement starButton;       // favorite button
 
     public void starButton(){
         clickElement(starButton);
+    }
+    public void verifyStarButton(){
+        verifyDisplayed(starButton,"star button is not displayed");
     }
     @FindBy(xpath = "//span[@style='font-size: 16px; font-weight: 500; padding-left: 8px;']")
     private WebElement AssignmentText;   // assignment sayfasının açıldığına dair verify
