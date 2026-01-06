@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import pages.AssignmentPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utility.BaseDriver;
 
 public class US_21_assignmentSteps {
     WebDriver driver;
@@ -16,6 +17,7 @@ public class US_21_assignmentSteps {
 
     @Then("Click assignments button from hamburger menu")
     public void clickAssignmentsButtonFromHamburgerMenu() {
+        driver= BaseDriver.getDriver();
         assignmentPage=new AssignmentPage(driver);
         homePage=new HomePage(driver);
         homePage.clickAssignmentButton();

@@ -1,0 +1,17 @@
+package runner;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(
+        features = {
+                "src/test/resources/features/assignment.feature",
+
+        },
+        glue = {"StepDefinitions", "hooks"},
+        tags = "@Assignment22",
+        plugin = {"pretty", "html:target/cucumber-report.html"}
+)
+
+public class US_22_AssignmentRunner extends AbstractTestNGCucumberTests {
+}
