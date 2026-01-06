@@ -3,7 +3,7 @@ Feature: Login functionality
 
 
 
-  @Smoke1
+  @Smoke
   Scenario: Login with valid data
     When Navigate to the webpage.
     Then Enter username and password

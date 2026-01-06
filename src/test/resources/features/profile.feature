@@ -1,8 +1,10 @@
 Feature: Profile Settings Tests
 
-  Background:
-    Given Navigate to WebSite
-    When Enter username and password and click login button
+  Background: Login with valid data
+    When Navigate to the webpage.
+    Then Enter username and password
+    Then Click login button
+    Then  Verify Home page opened
 
     Scenario: Profile settings check
       Then click the profile settings button

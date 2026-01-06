@@ -1,6 +1,5 @@
 package StepDefinitions;
 
-import Hooks.Hooks;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import pages.AttendancePage;
