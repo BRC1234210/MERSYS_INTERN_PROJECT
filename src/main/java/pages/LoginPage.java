@@ -30,13 +30,13 @@ public class LoginPage extends BasePage {
     }
 
 
-    @FindBy(xpath = "//button/span[contains(text(),' GİRİŞ YAP ')]")
+    // Dil bağımsız locator - hem Türkçe ("GİRİŞ YAP") hem İngilizce ("LOGIN") için çalışır
+    @FindBy(xpath = "//button/span[contains(text(),'LOGIN') or contains(text(),'GİRİŞ YAP')]")
     private WebElement loginButton;
 
     public void clickLoginButton(){
-        clickElement(loginButton);
+            clickElement(loginButton);
     }
-
 
     @FindBy(xpath = "//label[@class='mdc-label']")
     private WebElement rememberMeButton;
