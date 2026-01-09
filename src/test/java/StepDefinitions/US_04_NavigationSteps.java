@@ -65,37 +65,37 @@ public class US_04_NavigationSteps {
 
     @Then("New Message page opens")
     public void newMessagePageOpens() {
-        assert page.isNewMessagePageDisplayed();
+        page.verifyNewMessagePageDisplayed();
         LOGGER.info("New Message page opened");
     }
 
     @Then("Text editor is displayed")
     public void textEditorIsDisplayed() {
-        assert page.isTextEditorPresent();
+        page.verifyTextEditorPresent();
         LOGGER.info("Text editor is displayed");
     }
 
     @Then("Inbox page opens")
     public void inboxPageOpens() {
-        assert page.isInboxPageDisplayed();
+        page.verifyInboxPageDisplayed();
         LOGGER.info("Inbox page opened");
     }
 
     @Then("Outbox page opens")
     public void outboxPageOpens() {
-        assert page.isOutboxPageDisplayed();
+        page.verifyOutboxPageDisplayed();
         LOGGER.info("Outbox page opened");
     }
 
     @Then("Trash page opens")
     public void trashPageOpens() {
-        assert page.isTrashPageDisplayed();
+        page.verifyTrashPageDisplayed();
         LOGGER.info("Trash page opened");
     }
 
     @Then("Message list is displayed")
     public void messageListIsDisplayed() {
-        assert page.isMessageListDisplayed();
+        page.verifyMessageListDisplayed();
         LOGGER.info("Message list is displayed");
     }
 }
