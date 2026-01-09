@@ -149,8 +149,11 @@ public class AssignmentPage extends BasePage{
     @FindBy(xpath = "//ms-confirm-button[@icon='file-import']")
     private WebElement submitButton;      // submit button
 
-    public void submitButton(){
+    public void clickSubmitButton(){
         clickElement(submitButton);
+    }
+    public void verifySubmitButton(){
+        verifyDisplayed(submitButton,"Submit button is not displayed.");
     }
     @FindBy(xpath = "//span[@class='title dialog-title']")
     private WebElement submissionAttemptText;    // gönderim sayfasının açıldığına dair verify

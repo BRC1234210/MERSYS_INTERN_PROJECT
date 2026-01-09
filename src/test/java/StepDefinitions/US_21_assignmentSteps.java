@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import pages.AssignmentPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MessagingPage;
 import utility.BaseDriver;
 
 public class US_21_assignmentSteps {
@@ -17,39 +18,46 @@ public class US_21_assignmentSteps {
     WebDriver driver;
     HomePage homePage;
     AssignmentPage assignmentPage;
+    MessagingPage messagingPage;
 
     @Then("Click assignments button from hamburger menu")
     public void clickAssignmentsButtonFromHamburgerMenu() {
         driver= BaseDriver.getDriver();
         assignmentPage=new AssignmentPage(driver);
         homePage=new HomePage(driver);
+        messagingPage=new MessagingPage(driver);
         homePage.clickAssignmentButton();
         log.info("Assignment button is clickable.");
     }
 
     @And("Verify assignments page opened")
     public void verifyAssignmentsPageOpened() {
-        
+        assignmentPage.verifyAssignmentText();
+        log.info("Assignment page opened.");
     }
 
     @Then("Verify submit button is visible next to assignment")
     public void verifySubmitButtonIsVisibleNextToAssignment() {
-        
+        assignmentPage.verifySubmitButton();
+        log.info("submit button is displayed.");
     }
 
     @And("Click assignment submit icon")
     public void clickAssignmentSubmitIcon() {
-        
+        assignmentPage.clickSubmitButton();
+        log.info("Submit button is clickable.");
     }
 
     @Then("Verify assignment submission popup opened")
     public void verifyAssignmentSubmissionPopupOpened() {
-        
+        assignmentPage.verifySubmissionAttemptText();
+        log.info("The submission popup opened");
     }
 
     @And("Write text in assignment editor")
-    public void writeTextInAssignmentEditor() {
-        
+    public void writeTextInAssignmentEditor(String message) {
+        messagingPage.enterMessageBody(message);
+        log.info("");
     }
 
     @And("Paste text into editor")
