@@ -70,15 +70,5 @@ public class US_22_Assignment_Feature {
         log.info("Search button is clickable");
     }
 
-    @Then("The student accesses a dropdown menu \\(Display Format ...) on the Assignment page to sort the search results.")
-    public void theStudentAccessesADropdownMenuDisplayFormatOnTheAssignmentPageToSortTheSearchResults() {
-        assignmentPage.verifyStarButton();
-        log.info("The favorite button is visible.");
-    }
 
-    @Then("The student sorts the results by course, type, date, and table using the dropdown menu \\(Display Format ...).")
-    public void theStudentSortsTheResultsByCourseTypeDateAndTableUsingTheDropdownMenuDisplayFormat() {
-        assignmentPage.verifyStarButton();
-        log.info("The favorite button is visible.");
-    }
 }

@@ -78,7 +78,7 @@ public class US_21_assignmentSteps {
     }
 
     @Then("Attach file to assignment")
-    public void attachFileToAssignment() throws AWTException, InterruptedException {
+    public void attachFileToAssignment() throws AWTException {
         assignmentPage.clickAttachFilesButton();
         assignmentPage.clickFromLocal();
         assignmentPage.attachFile();

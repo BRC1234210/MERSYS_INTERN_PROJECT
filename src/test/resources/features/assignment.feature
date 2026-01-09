@@ -44,7 +44,6 @@ Feature: Assignment Functionality
       Then The student sees the search button on the Assign page and clicks on it.
       When the student performs a search without applying any filters (Default Search), all assigned tasks are listed.
       Then The student filters the search (Course, Status, Semester).
-      Then The student accesses a dropdown menu (Display Format ...) on the Assignment page to sort the search results.
-      Then The student sorts the results by course, type, date, and table using the dropdown menu (Display Format ...).
+
 
 

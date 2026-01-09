@@ -15,7 +15,7 @@ public class US_20_Assignment_Feature {
     AssignmentPage assignmentPage;
 
     @Then("The student clicks the assignments button on the hamburger menu")
-    public void theStudentClicksTheAssignmentsButtonOnTheHamburgerMenu() throws InterruptedException {
+    public void theStudentClicksTheAssignmentsButtonOnTheHamburgerMenu() {
         driver = BaseDriver.getDriver();
 
         assignmentPage = new AssignmentPage(driver);
@@ -35,7 +35,7 @@ public class US_20_Assignment_Feature {
     }
 
     @Then("The student clicks the favorite button to the right of the assignments on the assignment list")
-    public void theStudentClicksTheFavoriteButtonToTheRightOfTheAssignmentsOnTheAssignmentList() throws InterruptedException {
+    public void theStudentClicksTheFavoriteButtonToTheRightOfTheAssignmentsOnTheAssignmentList()  {
         assignmentPage.starButton();
         log.info("Favorite button is clickable.");
 
