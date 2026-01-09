@@ -117,55 +117,37 @@ public class MessagingPage extends BasePage {
             return false;
         }
     }
-    public boolean isNewMessagePageDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOf(subjectField));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
-    }
-    public boolean isTextEditorPresent() {
-        try {
-            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
-                By.xpath("//iframe[contains(@id,'tiny-angular')]")
-            ));
-            driver.switchTo().defaultContent();
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+    public void verifyNewMessagePageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(subjectField));
     }
 
-    public boolean isInboxPageDisplayed() {
-        return isPageDisplayed("Gelen Kutusu");
+    public void verifyTextEditorPresent() {
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
+            By.xpath("//iframe[contains(@id,'tiny-angular')]")
+        ));
+        driver.switchTo().defaultContent();
     }
 
-    public boolean isOutboxPageDisplayed() {
-        return isPageDisplayed("Giden Kutusu");
+    public void verifyInboxPageDisplayed() {
+        verifyPageDisplayed("Gelen Kutusu");
     }
 
-    public boolean isTrashPageDisplayed() {
-        return isPageDisplayed("Çöp");
+    public void verifyOutboxPageDisplayed() {
+        verifyPageDisplayed("Giden Kutusu");
     }
 
-    private boolean isPageDisplayed(String pageName) {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//span[contains(normalize-space(), '" + pageName + "')]")
-            ));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+    public void verifyTrashPageDisplayed() {
+        verifyPageDisplayed("Çöp");
     }
-    public boolean isMessageListDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOf(messageTable));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+
+    private void verifyPageDisplayed(String pageName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//span[contains(normalize-space(), '" + pageName + "')]")
+        ));
+    }
+
+    public void verifyMessageListDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(messageTable));
     }
     public void clickReceiversIcon() {
         clickElement(receiversIcon);
@@ -179,79 +161,31 @@ public class MessagingPage extends BasePage {
             By.xpath("//tr[contains(@class,'mat-mdc-row')]")
         ));
 
-        if (tryClickRecipientRow(recipientName)) return;
-        if (tryClickFirstRow()) return;
-        if (tryClickFirstCell()) return;
-
-        throw new RuntimeException("Could not select recipient: " + recipientName);
-    }
-
-    private boolean tryClickRecipientRow(String recipientName) {
-        try {
-            WebElement row = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//tr[contains(@class,'mat-mdc-row') and contains(.,'" + recipientName + "')]")
-            ));
-            row.click();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    private boolean tryClickFirstRow() {
-        try {
-            WebElement firstRow = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("(//tr[contains(@class,'mat-mdc-row')])[1]")
-            ));
-            firstRow.click();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    private boolean tryClickFirstCell() {
-        try {
-            WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("(//tr[contains(@class,'mat-mdc-row')]//td)[1]")
-            ));
-            clickableElement.click();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        WebElement row = wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//tr[contains(@class,'mat-mdc-row') and contains(.,'" + recipientName + "')]")
+        ));
+        row.click();
     }
 
     public void closeRecipientPanel() {
         clickElement(addAndCloseButton);
     }
-    public boolean isRecipientDisplayedInField(String recipientName) {
-        try {
-            WebElement recipient = driver.findElement(By.xpath("//span[contains(text(), '" + recipientName + "')]"));
-            return recipient.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public void verifyRecipientDisplayedInField(String recipientName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//span[contains(text(), '" + recipientName + "')]")
+        ));
     }
-    public boolean isRecipientPanelDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//input[@placeholder='İsim, Kullanıcı Adı veya E-posta']")
-            ));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+
+    public void verifyRecipientPanelDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//input[@placeholder='İsim, Kullanıcı Adı veya E-posta']")
+        ));
     }
-    public boolean isRecipientListFiltered() {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//tr[@role='row' and contains(@class,'mat-mdc-row')]")
-            ));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+
+    public void verifyRecipientListFiltered() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//tr[@role='row' and contains(@class,'mat-mdc-row')]")
+        ));
     }
     public void clickSubjectField() {
         clickElement(subjectField);
@@ -332,45 +266,28 @@ public class MessagingPage extends BasePage {
         clickElement(selectFileButton);
     }
 
-    public boolean isFileAttachmentDialogOpen() {
-        try {
-            return fileAttachmentDialog.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
     public void clickSendButton() {
         clickElement(sendButton);
     }
-    public boolean isSuccessMessageDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(text(), 'başarı') or contains(text(), 'Başarı')]")
-            ));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+
+    public void verifySuccessMessageDisplayed() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//div[contains(text(), 'başarı') or contains(text(), 'Başarı')]")
+        ));
     }
-    public boolean findMessageInList(String messageSubject) {
-        try {
-            String xpath = "//div[contains(text(), '" + messageSubject + "')]";
-            WebElement message = driver.findElement(By.xpath(xpath));
-            return message.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+
+    public void verifyMessageInList(String messageSubject) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+            By.xpath("//div[contains(text(), '" + messageSubject + "')]")
+        ));
     }
+
     public void clickTrashIcon() {
         clickElement(deleteButton);
     }
-    public boolean isDeleteConfirmationDialogDisplayed() {
-        try {
-            wait.until(ExpectedConditions.visibilityOf(confirmationDialog));
-            return true;
-        } catch (TimeoutException | NoSuchElementException e) {
-            return false;
-        }
+
+    public void verifyDeleteConfirmationDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(confirmationDialog));
     }
 
     public void clickConfirmYesButton() {

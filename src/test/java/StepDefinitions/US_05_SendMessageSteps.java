@@ -29,7 +29,7 @@ public class US_05_SendMessageSteps {
 
     @Then("Recipient panel opens")
     public void recipientPanelOpens() {
-        assert page.isRecipientPanelDisplayed();
+        page.verifyRecipientPanelDisplayed();
         LOGGER.info("Recipient panel opened");
     }
 
@@ -41,7 +41,7 @@ public class US_05_SendMessageSteps {
 
     @Then("Recipient list is filtered")
     public void recipientListIsFiltered() {
-        assert page.isRecipientListFiltered();
+        page.verifyRecipientListFiltered();
         LOGGER.info("Recipient list is filtered");
     }
 
@@ -59,7 +59,7 @@ public class US_05_SendMessageSteps {
 
     @Then("{string} appears in recipients field")
     public void appearInRecipientsField(String recipientName) {
-        assert page.isRecipientDisplayedInField(recipientName);
+        page.verifyRecipientDisplayedInField(recipientName);
         LOGGER.info("{} appears in recipients field", recipientName);
     }
 
@@ -133,7 +133,7 @@ public class US_05_SendMessageSteps {
 
     @Then("Success message appears")
     public void successMessageAppears() {
-        assert page.isSuccessMessageDisplayed();
+        page.verifySuccessMessageDisplayed();
         LOGGER.info("Success message appeared");
     }
 
@@ -147,7 +147,7 @@ public class US_05_SendMessageSteps {
 
     @Then("Message {string} appears in list")
     public void messageAppearsInList(String messageSubject) {
-        assert page.findMessageInList(messageSubject);
+        page.verifyMessageInList(messageSubject);
         LOGGER.info("Message '{}' appears in list", messageSubject);
     }
 }

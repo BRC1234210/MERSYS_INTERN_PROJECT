@@ -29,7 +29,7 @@ public class US_06_DeleteMessageSteps {
 
     @Then("Delete confirmation appears")
     public void deleteConfirmationAppears() {
-        assert page.isDeleteConfirmationDialogDisplayed();
+        page.verifyDeleteConfirmationDisplayed();
         LOGGER.info("Delete confirmation appeared");
     }
 
