@@ -13,6 +13,8 @@ import pages.LoginPage;
 import pages.MessagingPage;
 import utility.BaseDriver;
 
+import java.awt.*;
+
 public class US_21_assignmentSteps {
     public Logger log = LogManager.getLogger(this.getClass());
     WebDriver driver;
@@ -54,53 +56,70 @@ public class US_21_assignmentSteps {
         log.info("The submission popup opened");
     }
 
-    @And("Write text in assignment editor")
+    @And("Write text{string} in assignment editor")
     public void writeTextInAssignmentEditor(String message) {
+        messagingPage.clickTextEditor();
         messagingPage.enterMessageBody(message);
-        log.info("");
+        log.info("The message sent successfully");
     }
 
     @And("Paste text into editor")
     public void pasteTextIntoEditor() {
-        
+        messagingPage.selectAllTextInEditor();
+        messagingPage.copyTextInEditor();
+        messagingPage.pasteTextInEditor();
     }
 
     @And("Add image or table into editor")
     public void addImageOrTableIntoEditor() {
-        
+        messagingPage.clickTableIcon();
+        messagingPage.createTable(3,4);
+        log.info("The table has been created.");
     }
 
     @Then("Attach file to assignment")
-    public void attachFileToAssignment() {
-        
+    public void attachFileToAssignment() throws AWTException, InterruptedException {
+        assignmentPage.clickAttachFilesButton();
+        assignmentPage.clickFromLocal();
+        assignmentPage.attachFile();
+        log.info("");
     }
 
     @And("Save assignment as draft")
     public void saveAssignmentAsDraft() {
-        
+        assignmentPage.saveButton();
+        log.info("");
     }
 
     @Then("Verify success message displayed for draft save")
     public void verifySuccessMessageDisplayedForDraftSave() {
-        
+        assignmentPage.verifySuccesfullysave();
+        log.info("");
     }
 
     @And("Click submit assignment button")
     public void clickSubmitAssignmentButton() {
-        
+        assignmentPage.clickLastSubmitButton();
+        log.info("");
     }
 
     @Then("Verify confirmation popup opened")
     public void verifyConfirmationPopupOpened() {
-        
+        assignmentPage.verifyConfirmText();
+        log.info("");
     }
 
     @When("Approve assignment submission")
     public void approveAssignmentSubmission() {
-        
+        assignmentPage.yesButton();
+        log.info("");
     }
 
     @Then("Verify success message displayed for submission")
     public void verifySuccessMessageDisplayedForSubmission() {
+        assignmentPage.verifySuccesfullySend();
+        log.info("");
     }
+
+
 }
