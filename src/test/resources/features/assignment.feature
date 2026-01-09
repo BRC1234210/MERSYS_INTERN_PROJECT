@@ -22,7 +22,7 @@ Feature: Assignment Functionality
     And Click assignment submit icon
 
     Then Verify assignment submission popup opened
-    And Write text in assignment editor
+    And Write text" <HELLO WORLD>" in assignment editor
 
     And Paste text into editor
     And Add image or table into editor
