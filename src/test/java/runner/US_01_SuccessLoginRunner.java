@@ -10,7 +10,8 @@ import io.cucumber.testng.CucumberOptions;
 
         },
         glue = {"StepDefinitions", "hooks"},
-        plugin = {"pretty", "html:target/cucumber-report.html"}
+        plugin = {"pretty", "html:target/cucumber-report.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 
 
