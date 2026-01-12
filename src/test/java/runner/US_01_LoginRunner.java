@@ -16,5 +16,5 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-public class US_01_SuccessLoginRunner extends AbstractTestNGCucumberTests {
+public class US_01_LoginRunner extends AbstractTestNGCucumberTests {
 }
