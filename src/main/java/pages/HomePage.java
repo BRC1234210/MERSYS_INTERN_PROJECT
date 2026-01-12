@@ -4,9 +4,12 @@ import org.apache.logging.log4j.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import javax.swing.text.html.CSS;
 import java.util.logging.XMLFormatter;
+
+import static org.apache.logging.log4j.util.Assert.*;
 
 public class HomePage extends BasePage {
 
@@ -14,8 +17,17 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//img[@style='padding-right: 12px; padding-bottom: 4px; padding-top: 4px; max-height: 74px;']")
     private WebElement technoStudyWebsiteButton;
 
-    public void clickTechnoStudyWebsite(){
+    public void clickTechnoStudyWebsite() {
         clickElement(technoStudyWebsiteButton);
+    }
+
+    public void verifyTechnoStudyWebsite() {
+        verifyDisplayed(technoStudyWebsiteButton, "Techno study website button is not displayed.");
+    }
+
+
+    public void verifyTechnoStudyPageOpened() {
+        wait.until(ExpectedConditions.urlContains("technostudy.com.tr"));
     }
 
     @FindBy(xpath = "//ms-layout-menu-button[@page='COURSES']")
@@ -84,8 +96,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[@style='font-size: 20px; padding-top: 4px;']")
     private WebElement welcomeText;
 
-    public void verifyHomePage(){
-        verifyDisplayed(welcomeText,"welcome text is not displayed");
+    public void verifyHomePage() {
+        verifyDisplayed(welcomeText, "welcome text is not displayed");
     }
 
     public HomePage(WebDriver driver) {
