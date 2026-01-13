@@ -27,15 +27,14 @@ public class US_20_Assignment_Feature {
     }
 
     @Then("The student clicks the i button to the right of the assignments on the assignment list")
-    public void theStudentClicksTheIButtonToTheRightOfTheAssignmentsOnTheAssignmentList() throws InterruptedException {
+    public void theStudentClicksTheIButtonToTheRightOfTheAssignmentsOnTheAssignmentList() {
         assignmentPage.iIcon();
-        Thread.sleep(3000);
-        driver.navigate().back();
+        assignmentPage.driverNavigateBack();
         log.info("I icon is clikable.");
     }
 
     @Then("The student clicks the favorite button to the right of the assignments on the assignment list")
-    public void theStudentClicksTheFavoriteButtonToTheRightOfTheAssignmentsOnTheAssignmentList()  {
+    public void theStudentClicksTheFavoriteButtonToTheRightOfTheAssignmentsOnTheAssignmentList() {
         assignmentPage.starButton();
         log.info("Favorite button is clickable.");
 

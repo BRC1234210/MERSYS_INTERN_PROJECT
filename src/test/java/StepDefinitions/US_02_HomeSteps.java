@@ -20,14 +20,14 @@ public class US_02_HomeSteps {
         homePage=new HomePage(driver);
 
         homePage.verifyTechnoStudyWebsite();
-        log.info("");
+        log.info("Techno study button is clickable.");
 
     }
 
     @When("The user clicks on the company logo")
     public void theUserClicksOnTheCompanyLogo() {
         homePage.clickTechnoStudyWebsite();
-        log.info("");
+        log.info("Techno study website is opened");
     }
 
     @Then("The user should be redirected to {string}")
@@ -41,6 +41,6 @@ public class US_02_HomeSteps {
             }
         }
         homePage.verifyTechnoStudyPageOpened();
-        log.info("");
+        log.info("Techno study website is opened.");
     }
 }
