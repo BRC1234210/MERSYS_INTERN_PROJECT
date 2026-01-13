@@ -13,6 +13,7 @@ import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class AssignmentPage extends BasePage {
@@ -71,6 +72,7 @@ public class AssignmentPage extends BasePage {
     private WebElement startStudyDay;   // başlangıç ders günü filtrelemesi
 
     public void startStudyDay() {
+        wait.until(ExpectedConditions.visibilityOf(startStudyDay));
         clickElement(startStudyDay);
     }
 
@@ -86,6 +88,7 @@ public class AssignmentPage extends BasePage {
     private WebElement finishStudyDay;   //ders bitiş günü filtrelemesi
 
     public void finishStudyDay() {
+        wait.until(ExpectedConditions.visibilityOf(finishStudyDay));
         clickElement(finishStudyDay);
     }
 
@@ -210,7 +213,7 @@ public class AssignmentPage extends BasePage {
     @FindBy(xpath = "//ms-confirm-button[@icon='file-import']")
     private WebElement lastSubmitButton;
 
-    public void clickLastSubmitButton(){
+    public void clickLastSubmitButton() {
         clickElement(lastSubmitButton);
     }
 
@@ -229,22 +232,33 @@ public class AssignmentPage extends BasePage {
         verifyDisplayed(succesfullySend, "The message could not be sent.");
     }
 
-    public void attachFile() throws AWTException {
-        String filePath = "/Users/bariscansiz/Desktop/örnekResim.png";
 
-        // 1️⃣ Dosya yolunu clipboard'a koy
+    public void attachFile() throws AWTException {
+
+        String filePath = "/Users/bariscansiz/Desktop/örnekResim.png";
+
+        // Clipboard
         StringSelection selection = new StringSelection(filePath);
         Toolkit.getDefaultToolkit()
                 .getSystemClipboard()
                 .setContents(selection, null);
 
-        // 2️⃣ Upload butonuna TIKLANDIĞINDAN emin ol
-        // uploadButton.click();  <-- BUNU çağırdığın yerden önce yap
+        // 🔥 Finder'ı öne getir
+        try {
+            Runtime.getRuntime().exec(
+                    "osascript -e 'tell application \"System Events\" to tell process \"Finder\" to set frontmost to true'"
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Robot robot = new Robot();
-        robot.delay(1500); // dialog açılması için
+        robot.delay(2000); // Finder kesin açılsın
+        robot.mouseMove(600, 400);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 
-        // 3️⃣ CMD + V (Mac)
+        // CMD + V
         robot.keyPress(KeyEvent.VK_META);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
@@ -252,10 +266,21 @@ public class AssignmentPage extends BasePage {
 
         robot.delay(500);
 
-        // 4️⃣ ENTER
+        // ENTER
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+    }
 
+    @FindBy(xpath = "//button[@class='mdc-button mat-mdc-button-base mat-mdc-tooltip-trigger mat-badge mat-tonal-button mat-badge-secondary secondary mat-secondary mat-badge-above mat-badge-after mat-badge-medium mat-badge-hidden']")
+    private WebElement newSubmissionButton;
+
+    public void verifyNewSubmissionButton() {
+        verifyDisplayed(newSubmissionButton, "New submission button is not displayed");
+    }
+
+    public void driverNavigateBack() {
+        wait.until(ExpectedConditions.visibilityOf(newSubmissionButton));
+        driver.navigate().back();
     }
 
 

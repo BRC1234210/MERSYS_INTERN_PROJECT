@@ -1,6 +1,7 @@
 package pages;
 
 import org.apache.logging.log4j.util.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,6 +99,16 @@ public class HomePage extends BasePage {
 
     public void verifyHomePage() {
         verifyDisplayed(welcomeText, "welcome text is not displayed");
+    }
+
+    public void clickMenuByName(String menuName) {
+
+        WebElement menuElement = driver.findElement(
+                By.xpath("//span[normalize-space()='" + menuName + "']")
+        );
+
+        wait.until(ExpectedConditions.elementToBeClickable(menuElement));
+        menuElement.click();
     }
 
     public HomePage(WebDriver driver) {

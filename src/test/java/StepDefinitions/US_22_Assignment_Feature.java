@@ -45,7 +45,7 @@ public class US_22_Assignment_Feature {
     }
 
     @Then("The student filters the search \\(Course, Status, Semester).")
-    public void theStudentFiltersTheSearchCourseStatusSemester() throws InterruptedException {
+    public void theStudentFiltersTheSearchCourseStatusSemester()  {
         assignmentPage.classSelect();
         log.info("Class select is clickable");
         assignmentPage.mehmetSimsekSelect();
@@ -60,12 +60,10 @@ public class US_22_Assignment_Feature {
         log.info("Due date is clickable.");
         assignmentPage.startStudyDay();
         log.info("The start date has been selected.");
-        Thread.sleep(3000);
         assignmentPage.nextMonthButton();
         log.info("The next month button was pressed.");
         assignmentPage.finishStudyDay();
         log.info("The finish date has been selected.");
-        Thread.sleep(3000);
         assignmentPage.searchButton();
         log.info("Search button is clickable");
     }
