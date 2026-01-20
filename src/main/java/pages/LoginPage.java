@@ -56,7 +56,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[@class='hot-toast-bar-base']")
     private WebElement invalidLoginText;  // yanlış username girildiğinde çıkan text
 
-    public void verifyInvalıdLogin() {
+    public void verifyInvalidLogin() {
         verifyDisplayed(invalidLoginText, "invalid login text is not displayed.");
 
     }

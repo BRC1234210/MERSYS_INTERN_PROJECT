@@ -53,7 +53,7 @@ public class US_01_LoginSteps {
 
     @Then("Verify error message is displayed")
     public void verifyErrorMessageIsDisplayed() {
-        loginPage.verifyInvalıdLogin();
+        loginPage.verifyInvalidLogin();
         log.info("Invalid login text is displayed.");
     }
 
