@@ -4,6 +4,7 @@ import io.cucumber.java.de.Wenn;
 import io.cucumber.java.eo.Se;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -80,6 +81,7 @@ public class AssignmentPage extends BasePage {
     private WebElement nextMonthButton;
 
     public void nextMonthButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(nextMonthButton));
         clickElement(nextMonthButton);
     }
 
@@ -88,7 +90,7 @@ public class AssignmentPage extends BasePage {
     private WebElement finishStudyDay;   //ders bitiş günü filtrelemesi
 
     public void finishStudyDay() {
-        wait.until(ExpectedConditions.visibilityOf(finishStudyDay));
+       wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(finishStudyDay)));
         clickElement(finishStudyDay);
     }
 
@@ -114,6 +116,7 @@ public class AssignmentPage extends BasePage {
     private WebElement iIcon;               // info button
 
     public void iIcon() {
+       wait.until(ExpectedConditions.visibilityOf(iIcon));
         clickElement(iIcon);
     }
 
@@ -283,6 +286,13 @@ public class AssignmentPage extends BasePage {
         driver.navigate().back();
     }
 
+    @FindBy(xpath = "//*[contains(@class,'cdk-overlay-container')]//*[normalize-space()='36']")
+    private WebElement assignmentNumber;
+
+    public void verifyAssignmentNumber(){
+        wait.until(ExpectedConditions.visibilityOf(assignmentNumber));
+        verifyDisplayed(assignmentNumber,"assignment number is not displayed");
+    }
 
     public AssignmentPage(WebDriver driver) {
         super(driver);

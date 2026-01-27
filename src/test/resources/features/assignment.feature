@@ -6,6 +6,13 @@ Feature: Assignment Functionality
     Then Click login button
     Then  Verify Home page opened
 
+ @Assignment18
+   Scenario: Check the homework.
+   When The student sees the assignment button.
+   When the student hovers over the assignment button, they see the number of assignments.
+   When the student clicks on the assignment button, they see their assignments.
+
+
   @Assignment20
   Scenario: Assignment verification process
     Then The student clicks the assignments button on the hamburger menu

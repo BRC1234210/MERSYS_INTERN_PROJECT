@@ -40,6 +40,9 @@ public class US_21_assignmentSteps {
 
     @Then("Verify submit button is visible next to assignment")
     public void verifySubmitButtonIsVisibleNextToAssignment() {
+        assignmentPage.dueDate();
+        assignmentPage.startStudyDay();
+        assignmentPage.finishStudyDay();
         assignmentPage.verifySubmitButton();
         log.info("submit button is displayed.");
     }
