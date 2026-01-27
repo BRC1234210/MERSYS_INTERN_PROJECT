@@ -4,6 +4,7 @@ import org.apache.logging.log4j.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -57,6 +58,14 @@ public class HomePage extends BasePage {
 
     public void clickAssignmentButton() {
         clickElement(assignmentButton);
+    }
+    public void verifyAssignmentButton(){
+        verifyDisplayed(assignmentButton,"Assignment button is not displayed");
+    }
+
+    public void hoverOverAssignment(){
+        Actions actions=new Actions(driver);
+        actions.moveToElement(assignmentButton).perform();
     }
 
     @FindBy(xpath = "//ms-layout-menu-button[@page='GRADING']")

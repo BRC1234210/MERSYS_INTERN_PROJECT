@@ -28,6 +28,9 @@ public class US_20_Assignment_Feature {
 
     @Then("The student clicks the i button to the right of the assignments on the assignment list")
     public void theStudentClicksTheIButtonToTheRightOfTheAssignmentsOnTheAssignmentList() {
+        assignmentPage.dueDate();
+        assignmentPage.startStudyDay();
+        assignmentPage.finishStudyDay();
         assignmentPage.iIcon();
         assignmentPage.driverNavigateBack();
         log.info("I icon is clikable.");

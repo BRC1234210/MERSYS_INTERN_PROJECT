@@ -30,6 +30,7 @@ public class US_22_Assignment_Feature {
 
     @Then("The student sees the search button on the Assign page and clicks on it.")
     public void theStudentSeesTheSearchButtonOnTheAssignPageAndClicksOnIt() {
+
         assignmentPage.searchButton();
         log.info("Search button is clickable.");
     }
@@ -60,8 +61,7 @@ public class US_22_Assignment_Feature {
         log.info("Due date is clickable.");
         assignmentPage.startStudyDay();
         log.info("The start date has been selected.");
-        assignmentPage.nextMonthButton();
-        log.info("The next month button was pressed.");
+
         assignmentPage.finishStudyDay();
         log.info("The finish date has been selected.");
         assignmentPage.searchButton();
