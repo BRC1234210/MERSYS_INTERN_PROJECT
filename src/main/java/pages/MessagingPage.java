@@ -9,7 +9,6 @@ public class MessagingPage extends BasePage {
 
     protected Actions actions = new Actions(driver);
 
-
     @FindBy(xpath = "(//span[@class='mdc-button__label']//*[@data-icon='bars'])[1]")
     private WebElement hamburgerMenu;
 
@@ -49,14 +48,11 @@ public class MessagingPage extends BasePage {
     @FindBy(xpath = "//button[.//span[text()='Gönder']]")
     private WebElement sendButton;
 
-    @FindBy(xpath = "//div[contains(text(), 'Bu mesajı çöp kutusuna')]")
+    @FindBy(xpath = "//div[contains(text(), 'Bu mesajı çöp kutusuna') or contains(text(), 'kalıcı olarak sil') or contains(text(), 'permanently delete') or contains(text(), 'Kalıcı olarak sil') or contains(text(), 'Silmek istiyor musunuz')]")
     private WebElement confirmationDialog;
 
-    @FindBy(xpath = "//button[@class='mdc-button mat-mdc-button-base secondary mat-tonal-button mat-unthemed']")
+    @FindBy(xpath = "//button[contains(@class,'mat-mdc-button') and (contains(., 'Sil') or contains(., 'Delete') or contains(., 'Yes') or contains(., 'Evet'))]")
     private WebElement confirmYesButton;
-
-    @FindBy(xpath = "//div[contains(@class, 'file')] | //div[contains(@class, 'attachment')]")
-    private WebElement fileAttachmentDialog;
 
     @FindBy(xpath = "(//tr[contains(@class,'mat-mdc-row')])[1]//div[@class='mdc-checkbox']")
     private WebElement attachFileCheckboxIcon;
@@ -76,38 +72,57 @@ public class MessagingPage extends BasePage {
     @FindBy(xpath = "//ms-button[@caption='GENERAL.BUTTON.SELECT']//button")
     private WebElement selectFileButton;
 
-    @FindBy(xpath = "(//tr[contains(@class,'mat-mdc-row')])[1]//button[@confirm]")
-    private WebElement deleteButton;
-
     @FindBy(xpath = "//ms-standard-button[@icon='sync']//button")
     private WebElement refreshIcon;
 
+    @FindBy(xpath = "//button[contains(@class,'mat-mdc-button') and (contains(., 'İptal') or contains(., 'Cancel'))]")
+    private WebElement cancelButton;
 
-    public MessagingPage(WebDriver driver) { super(driver);
+    @FindBy(xpath = "//div[contains(text(), 'Veriler yüklenirken')]")
+    private WebElement loadingIndicator;
+
+    @FindBy(xpath = "(//tr[contains(@class,'mat-mdc-row') and not(contains(@class,'cdk-no-data-row'))])[1]//ms-delete-button//button[@confirm]")
+    private WebElement firstMessageDeleteButton;
+
+    @FindBy(xpath = "(//tr[contains(@class,'mat-mdc-row') and not(contains(@class,'cdk-no-data-row'))])[1]//ms-standard-button[@icon='trash-restore']//button")
+    private WebElement firstMessageRestoreButton;
+
+    @FindBy(xpath = "//mat-dialog-container | //div[@role='dialog']")
+    private WebElement successDialog;
+
+    public MessagingPage(WebDriver driver) {
+        super(driver);
     }
 
     public void clickHamburgerMenu() {
         clickElement(hamburgerMenu);
     }
+
     public void hoverOverMessagingLink() {
         wait.until(ExpectedConditions.visibilityOf(messagingLink));
         actions.moveToElement(messagingLink).perform();
     }
+
     public void clickNewMessageOption() {
         clickElement(newMessageOption);
     }
+
     public void clickInboxOption() {
         clickElement(inboxOption);
     }
+
     public void clickOutboxOption() {
         clickElement(outboxOption);
     }
+
     public void clickTrashOption() {
         clickElement(trashOption);
     }
+
     public void clickAttachFileCheckBox() {
         clickElement(attachFileCheckboxIcon);
     }
+
     public boolean isSubmenuLinkVisible(String linkText) {
         try {
             String xpath = "//button[.//span[text()='" + linkText + "']]";
@@ -117,6 +132,7 @@ public class MessagingPage extends BasePage {
             return false;
         }
     }
+
     public void verifyNewMessagePageDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(subjectField));
     }
@@ -149,6 +165,7 @@ public class MessagingPage extends BasePage {
     public void verifyMessageListDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(messageTable));
     }
+
     public void clickReceiversIcon() {
         clickElement(receiversIcon);
     }
@@ -156,20 +173,17 @@ public class MessagingPage extends BasePage {
     public void searchRecipientByTerm(String searchTerm) {
         sendKeysToElement(recipientSearchField, searchTerm);
     }
-    public void selectRecipientOption(String recipientName) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//tr[contains(@class,'mat-mdc-row')]")
-        ));
 
-        WebElement row = wait.until(ExpectedConditions.elementToBeClickable(
+    public void selectRecipientOption(String recipientName) {
+        wait.until(ExpectedConditions.elementToBeClickable(
             By.xpath("//tr[contains(@class,'mat-mdc-row') and contains(.,'" + recipientName + "')]")
-        ));
-        row.click();
+        )).click();
     }
 
     public void closeRecipientPanel() {
         clickElement(addAndCloseButton);
     }
+
     public void verifyRecipientDisplayedInField(String recipientName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(
             By.xpath("//span[contains(text(), '" + recipientName + "')]")
@@ -187,12 +201,15 @@ public class MessagingPage extends BasePage {
             By.xpath("//tr[@role='row' and contains(@class,'mat-mdc-row')]")
         ));
     }
+
     public void clickSubjectField() {
         clickElement(subjectField);
     }
+
     public void enterSubject(String subject) {
         sendKeysToElement(subjectField, subject);
     }
+
     public void clickTextEditor() {
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
             By.xpath("//iframe[contains(@id,'tiny-angular')]")
@@ -237,19 +254,16 @@ public class MessagingPage extends BasePage {
         body.sendKeys(currentText);
         driver.switchTo().defaultContent();
     }
+
     public void clickTableIcon() {
         clickElement(tableIcon);
     }
+
     public void createTable(int rows, int cols) {
-        wait.until(ExpectedConditions.elementToBeClickable(tableSubmenu));
-        tableSubmenu.click();
-
-        String ariaLabel = rows + " columns, " + cols + " rows";
-        WebElement tablePicker = wait.until(ExpectedConditions.elementToBeClickable(
-            By.xpath("//div[@role='button' and @aria-label='" + ariaLabel + "']")
-        ));
-
-        actions.moveToElement(tablePicker).click().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(tableSubmenu)).click();
+        actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//div[@role='button' and @aria-label='" + rows + " columns, " + cols + " rows']")
+        ))).click().perform();
     }
 
     public void clickAttachFilesIcon() {
@@ -271,9 +285,7 @@ public class MessagingPage extends BasePage {
     }
 
     public void verifySuccessMessageDisplayed() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-            By.xpath("//div[contains(text(), 'başarı') or contains(text(), 'Başarı')]")
-        ));
+        wait.until(ExpectedConditions.invisibilityOf(successDialog));
     }
 
     public void verifyMessageInList(String messageSubject) {
@@ -283,7 +295,8 @@ public class MessagingPage extends BasePage {
     }
 
     public void clickTrashIcon() {
-        clickElement(deleteButton);
+        wait.until(ExpectedConditions.invisibilityOf(loadingIndicator));
+        clickElement(wait.until(ExpectedConditions.elementToBeClickable(firstMessageDeleteButton)));
     }
 
     public void verifyDeleteConfirmationDisplayed() {
@@ -293,8 +306,24 @@ public class MessagingPage extends BasePage {
     public void clickConfirmYesButton() {
         clickElement(confirmYesButton);
     }
+
     public void clickRefreshIcon() {
         clickElement(refreshIcon);
+    }
+
+    public void clickRestoreIconForFirstMessage() {
+        wait.until(ExpectedConditions.invisibilityOf(loadingIndicator));
+        clickElement(wait.until(ExpectedConditions.elementToBeClickable(firstMessageRestoreButton)));
+    }
+
+    public void verifyRestoreAndDeleteIconsVisible() {
+        wait.until(ExpectedConditions.invisibilityOf(loadingIndicator));
+        wait.until(ExpectedConditions.visibilityOf(firstMessageRestoreButton));
+        wait.until(ExpectedConditions.visibilityOf(firstMessageDeleteButton));
+    }
+
+    public void clickCancelButton() {
+        clickElement(cancelButton);
     }
 
 }
