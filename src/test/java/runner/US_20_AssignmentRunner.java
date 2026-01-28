@@ -9,14 +9,12 @@ import io.cucumber.testng.CucumberOptions;
 
         },
         glue = {"StepDefinitions", "hooks"},
-        tags = "@Assignment18",
+        tags = "@Assignment20",
         plugin = {"pretty", "html:target/cucumber-report.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 
 
 
-
-
-public class US_18_AssignmentRunner extends AbstractTestNGCucumberTests {
+public class US_20_AssignmentRunner extends AbstractTestNGCucumberTests {
 }

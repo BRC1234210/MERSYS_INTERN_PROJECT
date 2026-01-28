@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 import pages.CalendarPage;
 import utility.BaseDriver;
 
-public class CalendarSteps {
+public class US_23_24_25_CalendarSteps {
 
 
-    private static final Logger log = LoggerFactory.getLogger(CalendarSteps.class);
+    private static final Logger log = LoggerFactory.getLogger(US_23_24_25_CalendarSteps.class);
     CalendarPage calendarPage;
 
     @Before

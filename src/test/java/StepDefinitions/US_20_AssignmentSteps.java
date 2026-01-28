@@ -8,7 +8,7 @@ import pages.AssignmentPage;
 import pages.HomePage;
 import utility.BaseDriver;
 
-public class US_20_Assignment_Feature {
+public class US_20_AssignmentSteps {
     public Logger log = LogManager.getLogger(this.getClass());
     WebDriver driver;
     HomePage homePage;
