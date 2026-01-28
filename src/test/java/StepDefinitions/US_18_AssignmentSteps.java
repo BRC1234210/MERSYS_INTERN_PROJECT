@@ -1,17 +1,15 @@
 package StepDefinitions;
 
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import pages.AssignmentPage;
 import pages.HomePage;
 import utility.BaseDriver;
 
 
-public class US_18_AssignmentFeature {
+public class US_18_AssignmentSteps {
     public Logger log = LogManager.getLogger(this.getClass());
     WebDriver driver;
     HomePage homePage;

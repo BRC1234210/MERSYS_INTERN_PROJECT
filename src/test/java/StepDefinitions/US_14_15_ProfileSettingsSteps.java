@@ -1,7 +1,6 @@
 package StepDefinitions;
 
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.ProfileSettingsPage;
@@ -9,13 +8,13 @@ import utility.BaseDriver;
 
 import java.awt.*;
 
-public class ProfileSettingsSteps {
+public class US_14_15_ProfileSettingsSteps {
 
     WebDriver driver;
     ProfileSettingsPage profileSettingsPage;
     HomePage homePage;
 
-    public ProfileSettingsSteps() {
+    public US_14_15_ProfileSettingsSteps() {
         this.driver = BaseDriver.getDriver(); // BaseDriver'dan driver al
         this.profileSettingsPage=new ProfileSettingsPage(driver);
         this.homePage=new HomePage(driver);

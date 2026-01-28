@@ -1,7 +1,6 @@
 package StepDefinitions;
 
 import io.cucumber.java.Before;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
@@ -11,9 +10,9 @@ import pages.FinancePage;
 import pages.HomePage;
 import utility.BaseDriver;
 
-public class FinanceSteps {
+public class US_08_09_12_FinanceSteps {
 
-    private static final Logger LOGGER = LogManager.getLogger(FinanceSteps.class);
+    private static final Logger LOGGER = LogManager.getLogger(US_08_09_12_FinanceSteps.class);
     FinancePage financePage;
     HomePage homePage;
     WebDriver driver;

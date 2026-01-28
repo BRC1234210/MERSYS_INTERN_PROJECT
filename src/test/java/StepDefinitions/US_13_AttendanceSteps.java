@@ -8,13 +8,13 @@ import utility.BaseDriver;
 
 import java.awt.*;
 
-public class AttendanceSteps {
+public class US_13_AttendanceSteps {
 
     WebDriver driver;
     AttendancePage attendancePage;
     HomePage homePage;
 
-    public AttendanceSteps() {
+    public US_13_AttendanceSteps() {
         driver = BaseDriver.getDriver(); // BaseDriver'dan driver al
         this.attendancePage=new AttendancePage(driver);
         this.homePage=new HomePage(driver);

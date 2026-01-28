@@ -5,12 +5,11 @@ import io.cucumber.java.en.When;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import pages.AssignmentPage;
 import pages.HomePage;
 import utility.BaseDriver;
 
-public class US_22_Assignment_Feature {
+public class US_22_AssignmentSteps {
     public Logger log = LogManager.getLogger(this.getClass());
     WebDriver driver;
     AssignmentPage assignmentPage;

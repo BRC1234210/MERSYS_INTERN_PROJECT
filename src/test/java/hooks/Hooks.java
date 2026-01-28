@@ -10,7 +10,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import utility.BaseDriver;
-import utility.ExcelHelper;
 
 public class Hooks {
 WebDriver driver;
@@ -18,7 +17,7 @@ WebDriver driver;
 
     @Before
     public void setup(Scenario scenario) {
-        // testng.xml dosyasi icinde <parameter name='browser' olmasi durumunda
+
         try {
             String browserFromXML =
                     Reporter
@@ -30,8 +29,6 @@ WebDriver driver;
                 BaseDriver.setBrowser(browserFromXML);
             }
         } catch (Throwable ex) {
-            // Testng context yani her hangi bir xml dosyasi yoksa,
-            // her durumda System.getProperty("browser","chrome"); bu calisir
         }
         WebDriver driver = BaseDriver.getDriver();
         LOGGER.info("The driver has been created.");
@@ -44,7 +41,7 @@ WebDriver driver;
 
         try {
             WebDriver driver = BaseDriver.getDriver();
-            if (scenario.isFailed() && driver instanceof TakesScreenshot) { // base64 -> png
+            if (scenario.isFailed() && driver instanceof TakesScreenshot) {
                 LOGGER.info("Scenario Failed {}", scenario.getName());
                 byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", "Failed Screenshot");
@@ -52,7 +49,7 @@ WebDriver driver;
                 LOGGER.info("Scenario passed {}", scenario.getName());
             }
 
-            ExcelHelper.writeReport("target/report.xlsx", scenario.getName(), scenario.getStatus().toString());
+
         } finally {
             BaseDriver.tearDown();
             LOGGER.info("The driver quited successfully");
